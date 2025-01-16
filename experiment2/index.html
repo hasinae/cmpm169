@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 2: Vector Art, Animation & Interactivity</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,7 +32,7 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 2: Vector Art, Animation & Interactivity</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
@@ -44,20 +44,33 @@
 			</div>
 
 			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<h2><strong>Description</strong></h2>
+				<p>What are you trying to accomplish with this experiment?</p>
+				<p>In this experiment, I am trying to create an animated, psychedelic visual of concentric rectangles that oscillate between a minimum and maximum size. </p>
+				<p>The rectangles will rotate and have rapidly and randomly changing colors, creating a colorful spiral effect. </p>
+				<p>This experiment uses p5.js to manipulate shapes and animations while exploring transformations, color modes, and interactivity within the canvas.</p>
 			</div>
-
+			
 			<div class="minor-section">
-				<h2>Technical</h2>
+				<h2><strong>Technical</strong></h2>
 				<p>Describe in detail what you did technically and how it works?</p>
+				<p>Technically, I used p5.js to animate concentric rectangles that grow and shrink, creating a visually dynamic effect.</p>
+				<p> The 'a' variable controls the size of the outer rectangle, while a 'direction' variable toggles between growing and shrinking. </p>
+				<p> I used 'translate()'' to center the drawing and `rotate()` to apply rotations to the rectangles. </p>
+				<p> Multiple nested rectangles are drawn with decreasing sizes using a loop, creating a spiral effect. </p>
+				<p>I also utilized the HSB color mode to give the rectangles vibrant and randomly changing colors. </p>	
+				<p> The size of the rectangles oscillates between 'minSize' and 'maxSize'.</p>
 			</div>
-
+			
 			<div class="minor-section">
-				<h2>Reflection</h2>
+				<h2><strong>Reflection</strong></h2>
 				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p><strong> Hasina Reflection:</strong> The process involved experimenting with p5.js to create animated shapes. However, I faced many difficulties with getting the growth and shrinkage of the rectangles to work smoothly. </p>
+				<p> Initially, I think I accidentally updating the rectangle's size too quickly, but after adjusting the update logic, the oscillating behavior was fixed. </p>
+				<p> Another challenge was managing the color changes and ensuring they were applied correctly across the shapes. </p>
+				<p> The success was that I was able to integrate transformations, animations, and interactivity  to achieve a vibrant, animated spiral effect with a rectangle. </p>
 			</div>
-
+			
 		</section>
 		<nav id="links" class="minor-section">
 			<!-- Put link back to homepage here. -->

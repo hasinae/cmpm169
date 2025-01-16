@@ -1,9 +1,15 @@
 // sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+// Author: Hasina Esteqlal
+// Date: 12/16/2025
 
 // Here is how you might set up an OOP p5.js project
 // Note that p5.js looks for a file called sketch.js
+
+/*
+spiral rectangle but colorfull like psychedlics 
+https://editor.p5js.org/generative-design/sketches/P_2_1_1_04
+https://editor.p5js.org/generative-design/sketches/P_2_1_2_03 
+*/
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
@@ -40,7 +46,6 @@ function setup() {
   canvasContainer = $("#canvas-container");
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
-  // resize canvas is the page is resized
 
   // create an instance of the class
   myInstance = new MyClass("VALUE1", "VALUE2");
@@ -49,28 +54,78 @@ function setup() {
     resizeScreen();
   });
   resizeScreen();
+
+  rectMode(CENTER);
+  colorMode(HSB, 360, 100, 100);
+  noFill();
+  frameRate(60);
 }
+
+
+let a = 0;
+let direction = 1; // 1 for growing, -1 for shrinking
+const maxSize = 300; // maximum size of the rectangle
+const minSize = 50; // minimum size of the rectangle
+
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);    
+  background(0);    
   // call a method on the instance
   myInstance.myMethod();
 
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
-  noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
+  // // random ellipses
+  // let sc = random(20, 100);
+  // for (let i = 1; i <  10; i++)
+  // {
+  //   ellipse(random(width), random(height), sc, sc);
+  // }
 
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+
+  // spiral square
+  // for (let i = 0; i < -10; i ++)
+  // {
+  //   translate(width / 2, height / 2);
+  //   rotate(radians(a));
+  // }
+
+
+  // fill
+  // for (let i = 0; i < 10; i++)
+  // {
+  //   stroke(random(255), random(255), random(255));
+  //   strokeWeight(0.5);
+  // }
+
+  translate(width / 2, height / 2);
+
+  // rotate rectangles
+  rotate(radians(a));
+
+  for (let i = 0; i < 10; i++) {
+    let size = a - i * 10;
+    if (size > 0) 
+    {
+        stroke(random(360), 100, 100); 
+        strokeWeight(1);
+        rect(0, 0, size, size);
+    }
+}
+
+  // update the size based on the direction
+  a += direction * 0.5;
+
+  if (a >= maxSize) 
+  {
+      direction = -1; // shrinking
+  } 
+  else if (a <= minSize) 
+  {
+      direction = 1; // growing
+  }
+
+  // console.log(`Size: ${a}, Direction: ${direction}`);
+
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
