@@ -1,17 +1,33 @@
 // sketch.js - experiment 3 for cmpm 169 
-// Author: Hasina Esteqlal
+// Author: Hasina Esteqlal and Celeste Herrera
 // Date: 1/21/2025
 
+/*
+inspo: spiral, something to mimic Weather Systems
+https://editor.p5js.org/generative-design/sketches/P_2_1_1_04
+https://editor.p5js.org/generative-design/sketches/M_6_1_01 
+https://openprocessing.org/sketch/999506 
+
+*/
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
 const VALUE1 = 1;
 const VALUE2 = 2;
+// const spiralRaidus = 200; 
+// const noiseScale = 0.02;
+const numArms = 5; 
+const maxRadius = 300; 
+const arcLength = 3.14 / 6;
+const spiralSpeed = 0.03;
+
+
 
 // Globals
 let myInstance;
 let canvasContainer;
 var centerHorz, centerVert;
+let angles = [];
 
 class MyClass {
     constructor(param1, param2) {
@@ -47,28 +63,81 @@ function setup() {
     resizeScreen();
   });
   resizeScreen();
+
+  // angles for each arm 
+  for (let i = 0; i < numArms; i++) 
+  {
+    angles.push(random(TWO_PI));
+  }
+
 }
 
 // draw() function is called repeatedly, it's the main animation loop
-function draw() {
-  background(220);    
+function draw() 
+{
+  background('#73c2fb');    
+
+
+      // // Weather map effect: Dynamic color blobs
+      // noStroke();
+
+      // // Generate "weather map" blobs using noise
+      // for (let x = 0; x < width; x += 20) 
+      //   {
+      //     for (let y = 0; y < height; y += 20) 
+      //       {
+      //         // Generate noise value for smooth randomness
+      //         let noiseValue = noise(x * 0.01, y * 0.01, frameCount * 0.01);
+  
+      //         // Map noise value to color ranges
+      //         let c;
+      //         if (noiseValue < 0.4) 
+      //         {
+      //             c = color(0, 0, 255, 150); // Blue for cold or rain
+      //         } 
+      //         else if (noiseValue < 0.6) 
+      //         {
+      //             c = color(255, 255, 0, 150); // Yellow for moderate areas
+      //         } else {
+      //             c = color(255, 0, 0, 150); // Red for hot or intense areas
+      //         }
+  
+      //         // Draw rectangles to create a blocky, weather-map-like effect
+      //         fill(c);
+      //         ellipse(x, y, 20, 20);
+      //     }
+      // }
+
+  noFill();
+  stroke(255);
+  strokeWeight(3);
+
+  // find center of canvas
+  let centerX = width / 2;
+  let centerY = height / 2;
+
+  // draw spiral arms
+  for (let i = 0; i < numArms; i++)
+  {
+    let angle = angles[i];
+    let radius = maxRadius; 
+
+    while (radius > 0)
+    {
+      let startAngle = angle; 
+      let endAngle = angle + arcLength; 
+
+      arc(centerX, centerY, radius * 2, radius * 2, startAngle, endAngle);
+
+      // reduce speed
+      radius -= 10; 
+      angle += arcLength * 0.5;
+    }
+    angles[i] += spiralSpeed;
+  }
+
   // call a method on the instance
   myInstance.myMethod();
-
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
-  noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
-
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
