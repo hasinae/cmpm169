@@ -16,8 +16,8 @@ const VALUE1 = 1;
 const VALUE2 = 2;
 // const spiralRaidus = 200; 
 // const noiseScale = 0.02;
-const numArms = 5; 
-const maxRadius = 300; 
+const numArms = 7; 
+const maxRadius = 400; 
 const arcLength = 3.14 / 6;
 const spiralSpeed = 0.03;
 
@@ -28,42 +28,13 @@ let myInstance;
 let canvasContainer;
 var centerHorz, centerVert;
 let angles = [];
-
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
-
-    myMethod() {
-        // code to run when method is called
-    }
-}
-
-function resizeScreen() {
-  centerHorz = canvasContainer.width() / 2; // Adjusted for drawing logic
-  centerVert = canvasContainer.height() / 2; // Adjusted for drawing logic
-  console.log("Resizing...");
-  resizeCanvas(canvasContainer.width(), canvasContainer.height());
-  // redrawCanvas(); // Redraw everything based on new size
-}
+let noiseScale = 0.01;
+let c;
+let prev;
 
 // setup() function is called once when the program starts
 function setup() {
-  // place our canvas, making it fit our container
-  canvasContainer = $("#canvas-container");
-  let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
-  canvas.parent("canvas-container");
-  // resize canvas is the page is resized
-
-  // create an instance of the class
-  myInstance = new MyClass("VALUE1", "VALUE2");
-
-  $(window).resize(function() {
-    resizeScreen();
-  });
-  resizeScreen();
-
+  createCanvas(1000,1000);
   // angles for each arm 
   for (let i = 0; i < numArms; i++) 
   {
@@ -75,8 +46,7 @@ function setup() {
 // draw() function is called repeatedly, it's the main animation loop
 function draw() 
 {
-  background('#73c2fb');    
-
+  background('#73c2fb');
 
       // // Weather map effect: Dynamic color blobs
       // noStroke();
@@ -114,30 +84,48 @@ function draw()
 
   // find center of canvas
   let centerX = width / 2;
-  let centerY = height / 2;
+  let centerY = height / 2; 
 
   // draw spiral arms
   for (let i = 0; i < numArms; i++)
   {
     let angle = angles[i];
     let radius = maxRadius; 
-
+        
     while (radius > 0)
     {
       let startAngle = angle; 
-      let endAngle = angle + arcLength; 
-
+      let endAngle = angle + arcLength;
+      const n = noise(radius * noiseScale, height * noiseScale, frameCount * 0.01)
+      if (n < 0.33) 
+      {
+        c = lerpColor(color("red"), color("orange"), n); // Red-Orange for hot or intense areas
+      } 
+      else if (n < 0.66) 
+      {
+        c = lerpColor(color("yellow"), color("green"), n); // Yellow for moderate areas
+      } else {
+        c = lerpColor(color("blue"), color("purple"), n); // Blue for cold or rain
+      }
+      if(prev){
+        c = lerpColor(c, prev, n);
+      }
+      if(radius > 300){
+        c = color("white");
+        c.setAlpha(50);
+      }
+      stroke(c);
+      prev = c;
       arc(centerX, centerY, radius * 2, radius * 2, startAngle, endAngle);
-
+      
       // reduce speed
       radius -= 10; 
       angle += arcLength * 0.5;
+
     }
     angles[i] += spiralSpeed;
-  }
 
-  // call a method on the instance
-  myInstance.myMethod();
+  }
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
