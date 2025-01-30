@@ -1,6 +1,8 @@
-// sketch.js - experiment 3 for cmpm 169 
-// Author: Hasina Esteqlal and Celeste Herrera
-// Date: 1/21/2025
+// project.js - purpose and description here
+// Author: Your Name
+// Date:
+
+// NOTE: This is how we might start a basic JavaaScript OOP project
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file

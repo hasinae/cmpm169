@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 4: Images, Video, & Sound Art</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 4: Images, Video, & Sound Art</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					<!-- canvas will be added here -->
+				</div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2><strong>Description</strong></h2>
+				<p>What are you trying to accomplish with this experiment?</p>
+				<p>In this experiment, I aimed to create a glitch-inspired visual effect using a live camera feed. The goal was to manipulate the video's pixel data in real-time to produce dynamic distortions and color shifts, resulting in a visually engaging and surreal experience. By incorporating sine waves and random pixel manipulations, I sought to achieve a glitchy, animated transformation of the camera feed.</p>
+			</div>
+			
+			<div class="minor-section">
+				<h2><strong>Technical</strong></h2>
+				<p>Describe in detail what you did technically and how it works?</p>
+				<p>Technically, I used p5.js to capture and process the live camera feed. The `createCapture(VIDEO)` function initializes the video feed, and `video.loadPixels()` allows access to the pixel data for manipulation. I applied distortions by shifting pixel values dynamically using sine waves and random offsets. The `video.updatePixels()` function updates the video with the modified pixel data, creating the glitch effect.</p>
+				<p>To enhance the visual impact, I incorporated color cycling using the HSB color mode, which allowed for vibrant and smooth color transitions. The sine wave distortions were controlled by parameters such as amplitude and frequency, which determined the intensity and rhythm of the glitches. The final output is displayed on the canvas using the `image()` function, creating a real-time, glitchy transformation of the camera feed.</p>
+			</div>
+			
+			<div class="minor-section">
+				<h2><strong>Reflection</strong></h2>
+				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p><strong>Reflection:</strong> The process involved experimenting with p5.js to create a glitch-inspired visual effect using a live camera feed. Initially, I encountered challenges in manipulating the video's pixel data and ensuring smooth distortions. There were a lot of errors related to uninitialized objects and incorrect function calls which needed a lot of debugging.</p>
+				<p>By adjusting parameters and incorporating sine waves for dynamic effects, I achieved a more reliable result. The distortions became more fluid, and the overall visual output felt more polished and aligned with my vision. This step required extensive testing to balance the intensity of the glitches.</p>
+				<p>The final outcome is a glitchy, animated transformation of the camera feed, creating an engaging and visually dynamic experience. This project allowed me to explore real-time video processing and creative coding techniques effectively, demonstrating the potential of combining technical and artistic approaches in code.</p>
+			</div>
+			
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
