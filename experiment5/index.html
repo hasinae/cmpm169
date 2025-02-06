@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 5: 3D Graphics</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 5: 3D Graphics</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					<!-- canvas will be added here -->
+				</div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2><strong>Description</strong></h2>
+				<p>What are you trying to accomplish with this experiment?</p>
+				<p>In this experiment, I aim to create an interactive 3D physics sandbox where objects respond to user input and simulate realistic behaviors such as gravity, bouncing, and collisions. Additionally, I want to incorporate creative features like explosions triggered by double-clicks and dynamic color changes based on the velocity of the objects. The goal is to combine physics principles with interactive and visually engaging elements, creating a playful and dynamic environment for users to explore.
+				</p>
+			</div>
+			
+			<div class="minor-section">
+				<h2><strong>Technical</strong></h2>
+				<p>Describe in detail what you did technically and how it works?</p>
+				<p>I created an interactive physics sandbox where balls respond to gravity, user inputs, and collisions. The balls were programmed to stay within the sandbox by bouncing off the edges. I added an explosion effect that triggers on double click, causing nearby balls to scatter outward. Additionally, the balls change color based on their speed, adding a visual representation of their motion and making the sandbox more engaging. This project combines physics simulation with creative interactivity to deliver a dynamic and playful experience.
+				</p>
+			</div>
+			
+			<div class="minor-section">
+				<h2><strong>Reflection</strong></h2>
+				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p><strong>Reflection:</strong> The process of creating the interactive physics sandbox in p5.js was both challenging and rewarding. My goal was to simulate a 3D physics playground/sandbox while also incorporating creative features like explosions and dynamic color changes based on velocity. I came across difficulties with the double clicking feature, but I came across them quickly when I looked at my code more closely. 
+
+					Adjusting the physics mechanics, such as decreasing velocity during bounces, required a lot of experimentation. Incorporating the explosion effect on double click added layers of interactivity. These features made the sandbox feel a lot more engaging.
+					
+					The final result is an interactive 3D physics playground, where the objects respond to the user's actions. This project taught me the importance of blending technical elements with creative elements to create an really cool and engaging user experience. It deepened my understanding of 3D physics simulations and allowed me to learn more about the importance of experimentation and creative freedom in coding.
+					</p>
+			</div>
+			
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
