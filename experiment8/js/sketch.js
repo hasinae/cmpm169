@@ -6,8 +6,6 @@ let label = "Detecting...";
 let canvasContainer;
 
 function preload() {
-  classifier = ml5.imageClassifier(imageModelURL + 'model.json');
-
     // Check if ml5.js is available
     if (typeof ml5 === 'undefined') {
         console.error("ml5.js is not loaded yet.");
